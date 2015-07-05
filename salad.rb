@@ -1,51 +1,51 @@
 require 'pry'
-# require 'pry-byebug'
+
 class SaladCypher
   attr_reader(:transformation, :shift)
 
   ALPHABET = (('a'..'z').to_a + ('A'..'Z').to_a).join
 
-  # @shift =ARGV[0]
-
-  def initialize
-    print "TELL ME THE FUCKING KEY: "
-    @shift = gets.chomp.to_i
-
-    print "ENCRYPT SOME GODDAMN SHIT: "
-    @msg = gets.chomp
-
+  def initialize(msg:, shift:)
+    #APPARENTLY FOR NAMED PARAMETERS THE COLON GOES ON THE WRONG SIDE, THAT'S STUPID AS SHIT
+    # oh it's so you can specify defaults ('msg:nil'), what an asshole thing to do
+    @msg = msg
+    @shift = shift
     @transformation = ""
   end
 
   def cypher()
     @msg.each_char do |x|
       if ALPHABET.include?(x)
-        @transformation += ALPHABET[ALPHABET.index(x) - @shift]
+        @transformation += ALPHABET[rap(x)]
+        @transformation.downcase!
       else
         @transformation += x
       end
     end
-    @transformation.downcase!
+    @transformation
+    # @transformation.downcase!
   end
 
-  # def reverse()
-  #   @transformation
-  # end
+  def rap(pants)
+    (ALPHABET.index(pants) + @shift) % ALPHABET.length
+  end
+
 end
 
-  salad = SaladCypher.new
-  salad.cypher()
-  puts salad.transformation
 
 #
 ##  8=====D~
 
-  prints "blahblahbalh?"
-  @response = gets.chomp
+  # def reverse()
+  #   @transformation
+  # end
 
-  if @response = Y
-      -salad.shift
-  end
+  # prints "blahblahbalh?"
+  # @response = gets.chomp
+
+  # if @response = Y
+  #     -salad.shift
+  # end
 
 
 
