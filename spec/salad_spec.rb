@@ -38,7 +38,6 @@ RSpec.describe SaladCypher do
         expect(subject.cypher).to eql('ryypesq')
       end
     end
-
   end
 
   describe "#initialize" do
@@ -48,6 +47,11 @@ RSpec.describe SaladCypher do
     end
   end
 
+  describe "#reverse" do
+    it "returns original string" do
+      expect(subject.reverse).to eql('taargus')
+    end
+  end
 end
 
 

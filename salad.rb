@@ -15,7 +15,7 @@ class SaladCypher
     @transformation = ""
   end
 
-  def cypher()
+  def cypher
     @msg.each_char do |x|
       if ALPHABET.include?(x)
         @transformation += ALPHABET[rap(x, ALPHABET)]
@@ -32,15 +32,16 @@ class SaladCypher
   def rap(pants, origin)
     (origin.index(pants) + @shift) % origin.length
   end
+
+  def reverse
+    # @transformation
+  end
+
 end
 
 
 #
 ##  8=====D~
-
-  # def reverse()
-  #   @transformation
-  # end
 
   # prints "blahblahbalh?"
   # @response = gets.chomp
