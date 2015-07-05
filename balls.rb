@@ -7,5 +7,5 @@ require_relative 'salad.rb'
   msg = gets.chomp
 
   salad = SaladCypher.new(:msg => msg, :shift => shift)
-  salad.cypher()
+  salad.cypher
   puts salad.transformation
