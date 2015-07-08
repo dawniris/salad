@@ -8,4 +8,5 @@ require_relative 'salad.rb'
 
   salad = SaladCypher.new(:msg => msg, :shift => shift)
   salad.cypher
+  salad.reverse
   puts salad.transformation

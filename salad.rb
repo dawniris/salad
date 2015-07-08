@@ -33,22 +33,29 @@ class SaladCypher
     (origin.index(pants) + @shift) % origin.length
   end
 
+  def reverse_rap(pants, origin)
+    (origin.index(pants) - @shift) % origin.length
+  end
+
   def reverse
-    # @transformation
+    cypher
+    @transformation.each_char do |x|
+          # binding.pry
+      if ALPHABET.include?(x)
+        @transformation += ALPHABET[reverse_rap(x, ALPHABET)]
+        # @transformation.downcase!
+      elsif OTHER_ALPHABET.include?(x)
+        @transformation += OTHER_ALPHABET[reverse_rap(x, OTHER_ALPHABET)]
+      else
+        @transformation += x
+      end
+    end
+    @transformation
   end
 
 end
 
-
-#
 ##  8=====D~
-
-  # prints "blahblahbalh?"
-  # @response = gets.chomp
-
-  # if @response = Y
-  #     -salad.shift
-  # end
 
 
 

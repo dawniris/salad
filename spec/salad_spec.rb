@@ -6,7 +6,7 @@ RSpec.describe SaladCypher do
   subject{described_class.new(:msg => msg, :shift => shift)}
 
   describe "#cypher" do
-    it "returns shifted string" do
+    it "returns +shifted string" do
       expect(subject.cypher).to eql('zggxmay')
     end
 
@@ -48,10 +48,12 @@ RSpec.describe SaladCypher do
   end
 
   describe "#reverse" do
-    it "returns original string" do
-      expect(subject.reverse).to eql('taargus')
+    let(:shift) {1}
+    it "returns -shifted string" do
+      expect(subject.reverse).to eql('szzqftr')
     end
   end
+
 end
 
 
