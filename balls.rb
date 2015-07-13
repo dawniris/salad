@@ -8,5 +8,13 @@ require_relative 'salad.rb'
 
   salad = SaladCypher.new(:msg => msg, :shift => shift)
   salad.cypher
-  salad.reverse
   puts salad.transformation
+
+  print "REGERTS? y/n"
+  regrets = gets.chomp.to_s
+
+  if regrets == 'y'
+    salad.reverse
+    puts salad.transformation
+  end
+

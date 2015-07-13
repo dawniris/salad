@@ -37,6 +37,9 @@ class SaladCypher
     (origin.index(pants) - @shift) % origin.length
   end
 
+## would it be possible to interpolate (no) or specify a conditional (maybe) that designated whether the method
+ # was supposed to +@shift or -@shift?
+
   def reverse
     cypher
     @transformation.each_char do |x|
@@ -52,6 +55,8 @@ class SaladCypher
     end
     @transformation
   end
+
+
 
 end
 
