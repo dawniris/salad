@@ -10,10 +10,10 @@ require_relative 'salad.rb'
   salad.cypher
   puts salad.transformation
 
-  print "REGERTS? y/n"
-  regrets = gets.chomp.to_s
+  print "REGERTS? y/n "
+  crap = gets.chomp
 
-  if regrets == 'y'
+  if crap == 'y'
     salad.reverse
     puts salad.transformation
   end

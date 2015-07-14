@@ -16,17 +16,22 @@ class SaladCypher
   end
 
   def cypher
-    @msg.each_char do |x|
+    @string = logic(@string || @msg)
+  end
+
+  def logic(word)
+    pasta = []
+    word.each_char do |x|
       if ALPHABET.include?(x)
-        @transformation += ALPHABET[rap(x, ALPHABET)]
+        pasta << ALPHABET[rap(x, ALPHABET)]
         # @transformation.downcase!
       elsif OTHER_ALPHABET.include?(x)
-        @transformation += OTHER_ALPHABET[rap(x, OTHER_ALPHABET)]
+        pasta << OTHER_ALPHABET[rap(x, OTHER_ALPHABET)]
       else
-        @transformation += x
+        pasta << x
       end
     end
-    @transformation
+    pasta.join
   end
 
   def rap(pants, origin)
@@ -61,6 +66,5 @@ class SaladCypher
 end
 
 ##  8=====D~
-
 
 
