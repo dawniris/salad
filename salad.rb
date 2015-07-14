@@ -19,7 +19,7 @@ class SaladCypher
     @string = logic(@string || @msg)
   end
 
-  def logic(word)
+  def logic(word) #This is where the named param with a default will go - ternaries
     pasta = []
     word.each_char do |x|
       if ALPHABET.include?(x)
@@ -33,6 +33,10 @@ class SaladCypher
     end
     pasta.join
   end
+
+  ### WRITE YOUR STUPID TESTS FIRST
+  ### ^^^this fuckin logic is recyclable blam! // named params & send //
+  ## figure out recursive self.new (more complex in cognitive overhead but looks better) out of spite
 
   def rap(pants, origin)
     (origin.index(pants) + @shift) % origin.length
