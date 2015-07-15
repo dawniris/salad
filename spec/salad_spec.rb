@@ -60,7 +60,8 @@ RSpec.describe SaladCypher do
     let(:msg) {'bcde'}
     let(:shift) {1}
     it "returns -shifted string" do
-      expect(subject.reverse).to eql('abcd')
+      subject.cypher
+      expect(subject.reverse).to eql('bcde')
     end
   end
 
