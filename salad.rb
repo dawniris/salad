@@ -1,7 +1,7 @@
 require 'pry'
 
 class SaladCypher
-  attr_reader(:transformation, :shift)
+  attr_reader(:transformation, :shift, :string)
 
   ALPHABET = ('a'..'z').to_a
   OTHER_ALPHABET = ('A'..'Z').to_a
@@ -26,7 +26,6 @@ class SaladCypher
   #   but this doesn't work because @shift is only 'assigned a value' (in the loosest sense) in the wrap method itself
   #   instead, probably use a 'forward' vs. 'backward' assignment ?
   #   but then how does attr_accessor learn about the assignment? Because the param needs to get passed from balls to salad.
-
     pasta = []
     word.each_char do |x|
       if ALPHABET.include?(x)
