@@ -49,8 +49,6 @@ class SaladCypher
     (origin.index(pants) - @shift) % origin.length
   end
 
-
-
 end
 
 ##  8=====D~
