@@ -15,7 +15,7 @@ require_relative 'salad.rb'
 
   if crap == 'y'
     salad.reverse
-    puts salad.transformation
+    puts salad.string
   end
 
 

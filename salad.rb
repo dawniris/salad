@@ -16,22 +16,20 @@ class SaladCypher
   end
 
   def cypher
-    @string = logic(@string || @msg) #, method: 'reverse_rap')
+    @string = logic(@string || @msg, :method => 'rap')
   end
 
-  def logic(word, method:'rap')
+  def reverse
+    @string = logic(@string || @msg, :method => 'reverse_rap')
+  end
 
-  # This is where the named param with a default will go - ternaries
-  #   ## +@shift ? value = 'rap' : value = 'reverse_wrap' ... but then 'value' is the method called
-  #   but this doesn't work because @shift is only 'assigned a value' (in the loosest sense) in the wrap method itself
-  #   instead, probably use a 'forward' vs. 'backward' assignment ?
-  #   but then how does attr_accessor learn about the assignment? Because the param needs to get passed from balls to salad.
+  def logic(word, method:)
     pasta = []
     word.each_char do |x|
       if ALPHABET.include?(x)
-        pasta << ALPHABET[rap(x, ALPHABET)] #stop asking this stupid 'how to switch method' question and remember fucking .send
+        pasta << ALPHABET[send(method, x, ALPHABET)] #stop asking this stupid 'how to switch method' question and remember fucking .send
       elsif OTHER_ALPHABET.include?(x)
-        pasta << OTHER_ALPHABET[rap(x, OTHER_ALPHABET)]
+        pasta << OTHER_ALPHABET[send(method, x, OTHER_ALPHABET)]
       else
         pasta << x
       end
@@ -49,22 +47,6 @@ class SaladCypher
 
   def reverse_rap(pants, origin)
     (origin.index(pants) - @shift) % origin.length
-  end
-
-## would it be possible to interpolate (no) or specify a conditional (maybe) that designated whether the method
- # was supposed to +@shift or -@shift?
-
-  def reverse
-    @string.each_char do |x|
-      if ALPHABET.include?(x)
-        @transformation += ALPHABET[reverse_rap(x, ALPHABET)]
-      elsif OTHER_ALPHABET.include?(x)
-        @transformation += OTHER_ALPHABET[reverse_rap(x, OTHER_ALPHABET)]
-      else
-        @transformation += x
-      end
-    end
-    @transformation
   end
 
 
