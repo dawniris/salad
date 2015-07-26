@@ -13,7 +13,7 @@ require_relative 'salad.rb'
   print "REGERTS? y/n "
   crap = gets.chomp
 
-  if crap == 'y'
+  if crap.downcase == 'y'
     salad.reverse
     puts salad.string
   end
