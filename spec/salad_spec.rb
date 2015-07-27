@@ -10,6 +10,15 @@ RSpec.describe SaladCypher do
       expect(subject.cypher).to eql('zggxmay')
     end
 
+    context "called multiple times" do
+      let(:msg) {'abc'}
+      let(:shift) {2}
+      it "is cyclical" do
+        subject.cypher
+        expect(subject.cypher).to eql ('efg')
+      end
+    end
+
     context "with capitals" do
       let(:msg) {'AZ'}
       it "retains capital letter" do
@@ -48,9 +57,11 @@ RSpec.describe SaladCypher do
   end
 
   describe "#reverse" do
+    let(:msg) {'bcde'}
     let(:shift) {1}
     it "returns -shifted string" do
-      expect(subject.reverse).to eql('szzqftr')
+      subject.cypher
+      expect(subject.reverse).to eql('bcde')
     end
   end
 
